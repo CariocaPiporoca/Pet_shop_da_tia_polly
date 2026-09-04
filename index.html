@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet da tia Polly — Estética Animal</title>
+
+ <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!---- SVG ICON SPRITE (sem dependências externas) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="icon-paw" viewBox="0 0 24 24"><circle cx="7" cy="7" r="2.3"/><circle cx="12" cy="4.6" r="2.3"/><circle cx="17" cy="7" r="2.3"/><path d="M12 11c-3.6 0-6.6 2.8-6.6 5.9 0 2 1.7 3.3 3.7 2.7.9-.3 1.9-.3 2.9 0 1 .3 2 .3 2.9 0 1-.3 2-.3 2.9 0 2 .6 3.7-.7 3.7-2.7C21.5 13.8 15.6 11 12 11Z"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.2"/><path d="M3.5 9.5h17"/><path d="M8 3v4M16 3v4"/></symbol>
+    <symbol id="icon-calendar-check" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.2"/><path d="M3.5 9.5h17"/><path d="M8 3v4M16 3v4"/><path d="M8.5 14.5l2.2 2.2 4.3-4.3"/></symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.2c1.4-3.6 4.2-5.6 7.5-5.6s6.1 2 7.5 5.6"/></symbol>
+    <symbol id="icon-shower" viewBox="0 0 24 24"><path d="M7 3.5c1.8 1 2.3 3 1 4.5"/><path d="M4.5 9.5h15v2.7c0 4.3-3.4 7.8-7.5 7.8s-7.5-3.5-7.5-7.8V9.5Z"/><path d="M9 21v-1M12 21v-1M15 21v-1"/></symbol>
+    <symbol id="icon-scissors" viewBox="0 0 24 24"><circle cx="6.2" cy="6.5" r="2.3"/><circle cx="6.2" cy="17.5" r="2.3"/><path d="M8 8l12 8M8 16l12-8"/></symbol>
+    <symbol id="icon-house" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
+    <symbol id="icon-car" viewBox="0 0 24 24"><path d="M4 16V12.2c0-.5.2-1 .6-1.3L6.6 9c.4-.4 1-.6 1.5-.6h7.8c.6 0 1.1.2 1.5.6l2 1.9c.4.3.6.8.6 1.3V16"/><path d="M3.5 16h17v2.5a1 1 0 0 1-1 1h-1.2a1 1 0 0 1-1-1V17H6.7v1.5a1 1 0 0 1-1 1H4.5a1 1 0 0 1-1-1V16Z"/><circle cx="7.5" cy="16.2" r="1.4"/><circle cx="16.5" cy="16.2" r="1.4"/></symbol>
+    <symbol id="icon-laptop" viewBox="0 0 24 24"><rect x="4" y="4.5" width="16" height="10.5" rx="1.4"/><path d="M2.5 19.5h19"/><path d="M9 19.5l1-2h4l1 2"/></symbol>
+    <symbol id="icon-grad" viewBox="0 0 24 24"><path d="M2.5 9 12 4.5 21.5 9 12 13.5 2.5 9Z"/><path d="M6.5 11v4.5c0 1.4 2.5 2.7 5.5 2.7s5.5-1.3 5.5-2.7V11"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-9.7-9.3C.7 7.1 2.3 3.8 5.6 3.2c2-.4 3.9.6 4.9 2.2l1.5 2.4 1.5-2.4c1-1.6 2.9-2.6 4.9-2.2 3.3.6 4.9 3.9 3.3 7.5C19.5 15.4 12 20 12 20Z"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3.5 19 6v6c0 5-3 8-7 9.5-4-1.5-7-4.5-7-9.5V6l7-2.5Z"/><path d="M9.3 12.3l1.9 1.9 3.6-3.8"/></symbol>
+    <symbol id="icon-quote" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M9.5 6.5c-3 1.2-4.7 3.6-4.7 6.7 0 2.3 1.5 4 3.6 4 1.8 0 3.1-1.3 3.1-3 0-1.6-1.1-2.8-2.6-2.9.2-1.6 1.4-3 3.1-3.7L9.5 6.5Zm9 0c-3 1.2-4.7 3.6-4.7 6.7 0 2.3 1.5 4 3.6 4 1.8 0 3.1-1.3 3.1-3 0-1.6-1.1-2.8-2.6-2.9.2-1.6 1.4-3 3.1-3.7l-2.5-1.1Z"/></symbol>
+    <symbol id="icon-clipboard" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16" rx="1.8"/><rect x="9" y="3" width="6" height="3" rx="1"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4.5"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M4 5.5h16v11H8l-4 3.5v-3.5H4v-11Z"/></symbol>
+    <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5A9.4 9.4 0 0 0 3.9 16.9L2.5 21.5l4.7-1.4A9.4 9.4 0 1 0 12 2.5Zm5.4 13.3c-.2.6-1.3 1.2-1.9 1.3-.5.1-1.1.1-1.8-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 .9-2.3c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.1.4.1.6-.1l.7-.9c.2-.3.4-.2.7-.1l1.8.9c.2.1.4.2.5.3.1.2.1.9-.1 1.5Z"/></symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-facebook" viewBox="0 0 24 24"><path d="M14.5 21v-7.5H17l.5-3.3h-3V8c0-1 .3-1.6 1.7-1.6H17.6V3.4c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.5v2.4H8v3.3h2.6V21"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M6 3.5 9 4c.6.1 1 .6 1 1.2v3c0 .5-.3.9-.7 1.1L7.8 10c1 2.4 3 4.4 5.4 5.4l.7-1.5c.2-.4.6-.7 1.1-.7h3c.6 0 1.1.4 1.2 1l.5 3c.1.7-.4 1.3-1.1 1.3H17C10 18.5 5.5 14 4.5 7V6c0-.7.6-1.2 1.3-1.2Z"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 6.5 12 13l8-6.5"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="icon-bars" viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></symbol>
+    <symbol id="icon-list" viewBox="0 0 24 24"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.3" cy="6.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.3" cy="12" r="1.1" fill="currentColor" stroke="none"/><circle cx="4.3" cy="17.5" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.8 14.8 9l6.7.6-5 4.4L18.2 21 12 17.5 5.8 21l1.7-7-5-4.4L9.2 9 12 2.8Z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="nav-wrap">
+    <a href="#inicio" class="logo">
+      <span class="logo-icon"><svg class="icon" width="20" height="20"><use href="#icon-paw"/></svg></span>
+      <span class="logo-text">
+        <strong>Pet da tia Polly</strong>
+        <span>Estética Animal</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#inicio" class="active">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#agendamento" class="btn-schedule">
+        <svg class="icon" width="15" height="15"><use href="#icon-calendar"/></svg> Agendar
+      </a>
+      <a href="#" class="profile-icon" aria-label="Área do tutor">
+        <svg class="icon" width="17" height="17"><use href="#icon-user"/></svg>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menu"><svg class="icon" width="20" height="20"><use href="#icon-bars"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="inicio" class="hero">
+  <div class="hero-content">
+    <span class="eyebrow"><svg class="icon" width="13" height="13"><use href="#icon-paw"/></svg> Bem-vindo ao Pet da tia Polly</span>
+    <h1>Cuidado e carinho para quem <span class="accent">você ama!</span></h1>
+    <p>Banho, tosa, pet sitter e muito mais para o bem-estar do seu pet.</p>
+    <div class="hero-ctas">
+      <a href="#agendamento" class="btn btn-primary"><svg class="icon" width="15" height="15"><use href="#icon-calendar-check"/></svg> Agende agora</a>
+      <a href="#servicos" class="btn btn-outline">Nossos serviços</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-blob" aria-hidden="true"></div>
+    <svg class="hero-illustration" viewBox="0 0 220 220" role="img" aria-label="Ilustração de um cachorro feliz">
+      <ellipse cx="110" cy="150" rx="66" ry="50" fill="#FFFFFF"/>
+      <ellipse cx="70" cy="70" rx="26" ry="34" fill="#FFFFFF" transform="rotate(-18 70 70)"/>
+      <ellipse cx="150" cy="70" rx="26" ry="34" fill="#FFFFFF" transform="rotate(18 150 70)"/>
+      <circle cx="110" cy="105" r="58" fill="#FFFFFF"/>
+      <circle cx="88" cy="100" r="7" fill="#111111"/>
+      <circle cx="132" cy="100" r="7" fill="#111111"/>
+      <ellipse cx="110" cy="120" rx="10" ry="7" fill="#111111"/>
+      <path d="M110 127 Q110 138 96 138" stroke="#111111" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M92 132 Q110 148 128 132" stroke="#D31017" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <circle cx="70" cy="108" r="9" fill="#FADBDA"/>
+      <circle cx="150" cy="108" r="9" fill="#FADBDA"/>
+    </svg>
+  </div>
+</section>
+
+<div class="perks-bar">
+  <div class="perk">
+    <span class="perk-icon"><svg class="icon" width="19" height="19"><use href="#icon-laptop"/></svg></span>
+    <span class="perk-text"><strong>Agende online</strong><span>Rápido e sem complicação</span></span>
+  </div>
+  <div class="perk">
+    <span class="perk-icon"><svg class="icon" width="19" height="19"><use href="#icon-grad"/></svg></span>
+    <span class="perk-text"><strong>Profissionais qualificados</strong><span>Equipe treinada e experiente</span></span>
+  </div>
+  <div class="perk">
+    <span class="perk-icon"><svg class="icon" width="19" height="19"><use href="#icon-heart"/></svg></span>
+    <span class="perk-text"><strong>Muito amor</strong><span>Carinho em cada atendimento</span></span>
+  </div>
+  <div class="perk">
+    <span class="perk-icon"><svg class="icon" width="19" height="19"><use href="#icon-shield"/></svg></span>
+    <span class="perk-text"><strong>Segurança</strong><span>Ambiente limpo e protegido</span></span>
+  </div>
+</div>
+
+<!-- ============ SERVIÇOS ============ -->
+<section id="servicos" class="paw-bg">
+  <div class="section-head">
+    <span class="eyebrow"><svg class="icon" width="13" height="13"><use href="#icon-paw"/></svg> O que fazemos</span>
+    <h2>Nossos Serviços</h2>
+    <p>Tudo o que seu pet precisa para ficar limpinho, cheiroso e feliz, com toda a segurança que ele merece.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon"><svg class="icon" width="26" height="26"><use href="#icon-shower"/></svg></span>
+      <h3>Banho</h3>
+      <p>Banho completo com produtos de qualidade e muito carinho.</p>
+      <a href="#agendamento" class="btn-outline-red btn">Saiba mais</a>
+    </div>
+    <div class="service-card">
+      <span class="service-icon"><svg class="icon" width="26" height="26"><use href="#icon-scissors"/></svg></span>
+      <h3>Tosa</h3>
+      <p>Tosa higiênica, na máquina ou na tesoura, com profissionais especializados.</p>
+      <a href="#agendamento" class="btn-outline-red btn">Saiba mais</a>
+    </div>
+    <div class="service-card">
+      <span class="service-icon"><svg class="icon" width="26" height="26"><use href="#icon-house"/></svg></span>
+      <h3>Pet Sitter</h3>
+      <p>Cuidado do seu pet no conforto da sua casa, enquanto você está fora.</p>
+      <a href="#agendamento" class="btn-outline-red btn">Saiba mais</a>
+    </div>
+    <div class="service-card">
+      <span class="service-icon"><svg class="icon" width="26" height="26"><use href="#icon-car"/></svg></span>
+      <h3>Táxi Pet</h3>
+      <p>Transporte seguro e confortável para o seu pet.</p>
+      <a href="#agendamento" class="btn-outline-red btn">Saiba mais</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE NÓS ============ -->
+<section id="sobre" class="about">
+  <div class="about-top">
+    <div class="about-text">
+      <span class="eyebrow"><svg class="icon" width="13" height="13"><use href="#icon-paw"/></svg> Sobre nós</span>
+      <h2>Uma clínica feita com muito carinho para o seu melhor amigo</h2>
+      <p>O Pet da tia Polly nasceu do amor pelos animais e da vontade de oferecer um espaço acolhedor, seguro e especializado em estética animal.</p>
+      <p>Cada atendimento é feito com respeito ao tempo e ao temperamento do pet, em um ambiente limpo, calmo e pensado para o bem-estar de cada visitante de quatro patas.</p>
+      <a href="#agendamento" class="btn btn-primary">Conheça nosso espaço</a>
+    </div>
+    <div class="about-visual">
+      <div class="about-illustration-wrap">
+        <svg class="about-illustration" viewBox="0 0 200 180" role="img" aria-label="Ilustração de um gato tranquilo">
+          <ellipse cx="100" cy="130" rx="58" ry="42" fill="#FFFFFF"/>
+          <path d="M55 60 L70 95 L95 78 Z" fill="#FFFFFF"/>
+          <path d="M145 60 L130 95 L105 78 Z" fill="#FFFFFF"/>
+          <circle cx="100" cy="92" r="50" fill="#FFFFFF"/>
+          <circle cx="82" cy="90" r="6" fill="#111111"/>
+          <circle cx="118" cy="90" r="6" fill="#111111"/>
+          <path d="M100 100 L94 108 L106 108 Z" fill="#D31017"/>
+          <path d="M100 108 Q100 116 90 116" stroke="#111111" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path d="M70 96 L50 90 M70 100 L48 100 M70 104 L50 110" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+          <path d="M130 96 L150 90 M130 100 L152 100 M130 104 L150 110" stroke="#111111" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="about-badge">
+        <strong>5+</strong>
+        <span>Anos de dedicação</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric"><strong>5+</strong><span>Anos de dedicação</span></div>
+    <div class="metric"><strong>500+</strong><span>Pets atendidos</span></div>
+    <div class="metric"><strong>100%</strong><span>Clientes satisfeitos</span></div>
+    <div class="metric"><strong>♥</strong><span>Equipe apaixonada</span></div>
+  </div>
+</section>
+
+<!-- ============ FEEDBACK ============ -->
+<section id="feedback" class="paw-bg">
+  <div class="section-head">
+    <span class="eyebrow"><svg class="icon" width="13" height="13"><use href="#icon-paw"/></svg> Depoimentos</span>
+    <h2>Quem já passou por aqui</h2>
+    <p>Veja o que os tutores e seus pets têm a dizer sobre a experiência no Pet da tia Polly.</p>
+  </div>
+
+  <div class="feedback-grid">
+    <div class="feedback-card">
+      <div class="feedback-top"><span class="pet-avatar"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span><span class="feedback-names"><strong>Thor</strong><span>Marina S.</span></span></div>
+      <div class="feedback-body"><svg class="icon-quote" viewBox="0 0 24 24"><use href="#icon-quote"/></svg><p>Melhor petshop do Gama, sem dúvidas! O Thor sempre volta cheiroso e feliz.</p></div>
+    </div>
+    <div class="feedback-card">
+      <div class="feedback-top"><span class="pet-avatar"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span><span class="feedback-names"><strong>Mimi</strong><span>Carlos E.</span></span></div>
+      <div class="feedback-body"><svg class="icon-quote" viewBox="0 0 24 24"><use href="#icon-quote"/></svg><p>Meu gato odeia banho, mas aqui ele fica tranquilo. Profissionais muito pacientes!</p></div>
+    </div>
+    <div class="feedback-card">
+      <div class="feedback-top"><span class="pet-avatar"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span><span class="feedback-names"><strong>Bidu</strong><span>Ana P.</span></span></div>
+      <div class="feedback-body"><svg class="icon-quote" viewBox="0 0 24 24"><use href="#icon-quote"/></svg><p>A tosa ficou perfeita, exatamente como pedi. Recomendo de olhos fechados!</p></div>
+    </div>
+    <div class="feedback-card">
+      <div class="feedback-top"><span class="pet-avatar"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span><span class="feedback-names"><strong>Rex</strong><span>Bruno L.</span></span></div>
+      <div class="feedback-body"><svg class="icon-quote" viewBox="0 0 24 24"><use href="#icon-quote"/></svg><p>Uso o táxi pet toda semana, super prático e o motorista é muito cuidadoso.</p></div>
+    </div>
+    <div class="feedback-card">
+      <div class="feedback-top"><span class="pet-avatar"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span><span class="feedback-names"><strong>Nina</strong><span>Juliana R.</span></span></div>
+      <div class="feedback-body"><svg class="icon-quote" viewBox="0 0 24 24"><use href="#icon-quote"/></svg><p>O pet sitter foi essencial durante minha viagem. Fiquei tranquila o tempo todo.</p></div>
+    </div>
+    <div class="feedback-card">
+      <div class="feedback-top"><span class="pet-avatar"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span><span class="feedback-names"><strong>Fred</strong><span>Renata M.</span></span></div>
+      <div class="feedback-body"><svg class="icon-quote" viewBox="0 0 24 24"><use href="#icon-quote"/></svg><p>Ambiente muito limpo e organizado. Dá para ver o cuidado com cada detalhe.</p></div>
+    </div>
+    <div class="feedback-card">
+      <div class="feedback-top"><span class="pet-avatar"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span><span class="feedback-names"><strong>Lola</strong><span>Felipe A.</span></span></div>
+      <div class="feedback-body"><svg class="icon-quote" viewBox="0 0 24 24"><use href="#icon-quote"/></svg><p>Atendimento nota mil, agendei pelo site e foi tudo muito rápido e fácil.</p></div>
+    </div>
+    <div class="feedback-card">
+      <div class="feedback-top"><span class="pet-avatar"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span><span class="feedback-names"><strong>Mel</strong><span>Patrícia N.</span></span></div>
+      <div class="feedback-body"><svg class="icon-quote" viewBox="0 0 24 24"><use href="#icon-quote"/></svg><p>A Mel sai sempre de bom humor daqui, dá pra perceber que ela é bem tratada.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AGENDAMENTO ============ -->
+<section id="agendamento" class="booking">
+  <div class="section-head">
+    <span class="eyebrow"><svg class="icon" width="13" height="13"><use href="#icon-paw"/></svg> Vamos marcar?</span>
+    <h2>Agende o cuidado do seu pet</h2>
+    <p>Preencha o formulário abaixo e entraremos em contato para confirmar o horário.</p>
+  </div>
+
+  <div class="booking-form-wrap">
+    <form>
+      <div class="form-cols">
+        <div class="form-col">
+          <h3><svg class="icon" width="17" height="17"><use href="#icon-paw"/></svg> Dados do Pet</h3>
+          <div class="field">
+            <label for="pet-nome">Nome <span class="req">*</span></label>
+            <input type="text" id="pet-nome" name="pet-nome" placeholder="Nome do pet" required>
+          </div>
+          <div class="field">
+            <label for="pet-especie">Espécie <span class="req">*</span></label>
+            <select id="pet-especie" name="pet-especie" required>
+              <option value="" selected disabled>Selecione</option>
+              <option value="cachorro">Cachorro</option>
+              <option value="gato">Gato</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pet-raca">Raça</label>
+            <input type="text" id="pet-raca" name="pet-raca" placeholder="Ex: Poodle, SRD...">
+          </div>
+          <div class="field">
+            <label for="pet-idade">Idade</label>
+            <input type="text" id="pet-idade" name="pet-idade" placeholder="Ex: 2 anos">
+          </div>
+        </div>
+
+        <div class="form-col">
+          <h3><svg class="icon" width="17" height="17"><use href="#icon-user"/></svg> Dados do Tutor</h3>
+          <div class="field">
+            <label for="tutor-nome">Nome completo <span class="req">*</span></label>
+            <input type="text" id="tutor-nome" name="tutor-nome" placeholder="Seu nome completo" required>
+          </div>
+          <div class="field">
+            <label for="tutor-whatsapp">WhatsApp <span class="req">*</span></label>
+            <input type="tel" id="tutor-whatsapp" name="tutor-whatsapp" placeholder="(00) 00000-0000" required>
+          </div>
+        </div>
+
+        <div class="form-col">
+          <h3><svg class="icon" width="17" height="17"><use href="#icon-clipboard"/></svg> Detalhes do Agendamento</h3>
+          <div class="field">
+            <label for="servico">Serviço <span class="req">*</span></label>
+            <select id="servico" name="servico" required>
+              <option value="" selected disabled>Selecione</option>
+              <option value="banho">Banho</option>
+              <option value="tosa">Tosa</option>
+              <option value="pet-sitter">Pet Sitter</option>
+              <option value="taxi-pet">Táxi Pet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="data">Data <span class="req">*</span></label>
+            <input type="date" id="data" name="data" required>
+          </div>
+          <div class="field">
+            <label for="horario">Horário <span class="req">*</span></label>
+            <input type="time" id="horario" name="horario" required>
+          </div>
+          <div class="field">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" name="observacoes" placeholder="Alguma informação importante sobre o pet?"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="btn btn-primary btn-block"><svg class="icon" width="16" height="16"><use href="#icon-calendar-check"/></svg> Confirmar Agendamento</button>
+        <p class="privacy-note"><svg class="icon" width="13" height="13"><use href="#icon-lock"/></svg> Seus dados estão seguros conosco.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section id="contato" class="paw-bg">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow"><svg class="icon" width="13" height="13"><use href="#icon-paw"/></svg> Fale conosco</span>
+      <h2>Estamos por perto para cuidar do seu pet</h2>
+      <p>Entre em contato pelo canal que preferir. Respondemos rapidinho!</p>
+
+      <div class="contact-item">
+        <span class="icon-wrap"><svg class="icon filled" width="17" height="17"><use href="#icon-whatsapp"/></svg></span>
+        <span><strong>WhatsApp</strong><span>(61) 99561-4275</span></span>
+      </div>
+      <div class="contact-item">
+        <span class="icon-wrap"><svg class="icon" width="17" height="17"><use href="#icon-instagram"/></svg></span>
+        <span><strong>Instagram</strong><span>@petdatiapolly</span></span>
+      </div>
+      <div class="contact-item">
+        <span class="icon-wrap"><svg class="icon" width="17" height="17"><use href="#icon-mail"/></svg></span>
+        <span><strong>E-mail</strong><span>contato@petdatiapolly.com.br</span></span>
+      </div>
+      <div class="contact-item">
+        <span class="icon-wrap"><svg class="icon" width="17" height="17"><use href="#icon-pin"/></svg></span>
+        <span><strong>Endereço</strong><span>Setor Sul, Gama - DF</span></span>
+      </div>
+      <div class="contact-item">
+        <span class="icon-wrap"><svg class="icon" width="17" height="17"><use href="#icon-clock"/></svg></span>
+        <span><strong>Horário de Atendimento</strong><span>Segunda a Sábado, 8h às 18h</span></span>
+      </div>
+    </div>
+
+    <div class="contact-form-card">
+      <h3>Envie uma mensagem rápida</h3>
+      <form>
+        <div class="field">
+          <label for="c-nome">Nome</label>
+          <input type="text" id="c-nome" name="c-nome" placeholder="Seu nome">
+        </div>
+        <div class="field">
+          <label for="c-contato">WhatsApp ou e-mail</label>
+          <input type="text" id="c-contato" name="c-contato" placeholder="Como podemos te responder?">
+        </div>
+        <div class="field">
+          <label for="c-mensagem">Mensagem</label>
+          <textarea id="c-mensagem" name="c-mensagem" placeholder="Escreva sua mensagem..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><svg class="icon" width="15" height="15"><use href="#icon-message"/></svg> Enviar mensagem</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">
+        <span class="logo-icon"><svg class="icon" width="18" height="18"><use href="#icon-paw"/></svg></span>
+        <strong>Pet da tia Polly</strong>
+      </div>
+      <p class="slogan">Cuidado e carinho para quem você ama!</p>
+    </div>
+
+    <nav class="footer-nav">
+      <span class="title">Navegação</span>
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="footer-social">
+      <span class="title">Redes sociais</span>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><svg class="icon" width="17" height="17"><use href="#icon-instagram"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg class="icon" width="17" height="17"><use href="#icon-facebook"/></svg></a>
+        <a href="#" aria-label="WhatsApp"><svg class="icon filled" width="17" height="17"><use href="#icon-whatsapp"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    &copy; 2026 Pet da tia Polly — Estética Animal. Todos os direitos reservados.
+  </div>
+</footer>
+<!-- ============ FIREBASE ============ -->
+<script type="module">
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+  import { getFirestore }
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+  // Configuração do Firebase
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBMpvHLiJ8L808uLP8djRpGH43PLW8AlNgU",
+    authDomain: "petshop-1bc29.firebaseapp.com",
+    projectId: "petshop-1bc29",
+    storageBucket: "petshop-1bc29.firebasestorage.app",
+    messagingSenderId: "617576014668",
+    appId: "1:617576014668:web:0105a332682783c5bfa5e9"
+  };
+
+
+  // Inicializa o Firebase
+
+  const app = initializeApp(firebaseConfig);
+
+
+  // Inicializa o Firestore
+
+  const db = getFirestore(app);
+
+
+  // Disponibiliza o banco para o script.js
+
+  window.firebaseDB = db;
+
+</script>
+
+<!-- ============ JAVASCRIPT ============ -->
+
+<script type="module" src="script.js"></script>
+
+
+</body>
+</html>
