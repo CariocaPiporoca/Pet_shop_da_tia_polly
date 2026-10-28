@@ -264,7 +264,8 @@
               <option value="" selected disabled>Selecione</option>
               <option value="cachorro">Cachorro</option>
               <option value="gato">Gato</option>
-              <option value="outro">Outro</option>
+              
+
             </select>
           </div>
           <div class="field">
@@ -297,17 +298,36 @@
               <option value="" selected disabled>Selecione</option>
               <option value="banho">Banho</option>
               <option value="tosa">Tosa</option>
+              <option value="banho e tosa">Banho e Tosa</option>
               <option value="pet-sitter">Pet Sitter</option>
-              <option value="taxi-pet">Táxi Pet</option>
+              <option value="taxi-pet e banho">Táxi Pet e Banho</option>
+              <option value="taxi-pet e tosa">Táxi Pet e Tosa</option>  
+              <option value="taxi-pet, banho e tosa">Táxi Pet, Banho e Tosa</option>
+
+              
+
             </select>
           </div>
           <div class="field">
             <label for="data">Data <span class="req">*</span></label>
             <input type="date" id="data" name="data" required>
+            <small id="data-aviso"></small>
           </div>
           <div class="field">
             <label for="horario">Horário <span class="req">*</span></label>
-            <input type="time" id="horario" name="horario" required>
+            <select id="horario" name="horario" required>
+              <option value="" selected disabled>Selecione o horário</option>
+              <option value="08:00">08:00</option>
+              <option value="09:00">09:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="12:00">12:00</option>
+              <option value="13:00">13:00</option>
+              <option value="14:00">14:00</option>
+              <option value="15:00">15:00</option>
+              <option value="16:00">16:00</option>
+            
+            </select>
           </div>
           <div class="field">
             <label for="observacoes">Observações</label>
@@ -333,26 +353,36 @@
       <p>Entre em contato pelo canal que preferir. Respondemos rapidinho!</p>
 
       <div class="contact-item">
-        <span class="icon-wrap"><svg class="icon filled" width="17" height="17"><use href="#icon-whatsapp"/></svg></span>
+        <a class="icon-wrap" href="https://wa.me/5561995614275"target="_blank"><svg class="icon filled" width="17" height="17"><use href="#icon-whatsapp"/></use></svg> </a>
         <span><strong>WhatsApp</strong><span>(61) 99561-4275</span></span>
       </div>
       <div class="contact-item">
-        <span class="icon-wrap"><svg class="icon" width="17" height="17"><use href="#icon-instagram"/></svg></span>
+        <a class="icon-wrap" href="https://www.instagram.com/petdatiapolly?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw==" target="_blank"><svg class="icon" width="17" height="17"><use href="#icon-instagram"/></svg></a>
         <span><strong>Instagram</strong><span>@petdatiapolly</span></span>
       </div>
       <div class="contact-item">
-        <span class="icon-wrap"><svg class="icon" width="17" height="17"><use href="#icon-mail"/></svg></span>
+        <a class="icon-wrap" href="mailto:petdatiapolly@gmail.com"><svg class="icon" width="17" height="17"><use href="#icon-mail"/></svg></a>
         <span><strong>E-mail</strong><span>contato@petdatiapolly.com.br</span></span>
       </div>
       <div class="contact-item">
-        <span class="icon-wrap"><svg class="icon" width="17" height="17"><use href="#icon-pin"/></svg></span>
-        <span><strong>Endereço</strong><span>Setor Sul, Gama - DF</span></span>
-      </div>
-      <div class="contact-item">
+        <a class="icon-wrap"
+        href="https://www.google.com/maps/dir//Mercad%C3%A3o+Leste,+SIND+-+Gama,+Bras%C3%ADlia+-+DF/@-15.955898,-48.0307621,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x9359807235d279c7:0xe00b250be7e6e901!2m2!1d-48.0565765!2d-16.016329?entry=ttu"
+        target="_blank">
+        
+        <svg class="icon" width="17" height="17">
+        <use href="#icon-pin"></use>
+        </svg>
+        </a>
+        
+        <span>
+        <strong>Endereço</strong> <span> Mercadão Leste - Loja 46, Gama - DF</span>
+        </span>
+        </div>
+        <div class="contact-item">
         <span class="icon-wrap"><svg class="icon" width="17" height="17"><use href="#icon-clock"/></svg></span>
-        <span><strong>Horário de Atendimento</strong><span>Segunda a Sábado, 8h às 18h</span></span>
-      </div>
-    </div>
+        <span><strong>Horário de Atendimento</strong><span>Segunda a Sexta, 8h às 18h</span></span>
+        </div>
+        </div>
 
     <div class="contact-form-card">
       <h3>Envie uma mensagem rápida</h3>
@@ -399,9 +429,12 @@
     <div class="footer-social">
       <span class="title">Redes sociais</span>
       <div class="social-icons">
-        <a href="#" aria-label="Instagram"><svg class="icon" width="17" height="17"><use href="#icon-instagram"/></svg></a>
-        <a href="#" aria-label="Facebook"><svg class="icon" width="17" height="17"><use href="#icon-facebook"/></svg></a>
-        <a href="#" aria-label="WhatsApp"><svg class="icon filled" width="17" height="17"><use href="#icon-whatsapp"/></svg></a>
+        <a href="https://www.instagram.com/petdatiapolly?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="icon" width="17" height="17"><use href="#icon-instagram"/></svg></a>
+          <a href="https://www.facebook.com/PetdatiaPolly" aria-label="Facebook">
+            <svg class="icon" width="17" height="17"><use href="#icon-facebook"/></svg></a>
+          <a href="https://api.whatsapp.com/send/?phone=5561995614275&text&type=phone_number&app_absent=0&utm_source=ig" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg class="icon filled" width="17" height="17"><use href="#icon-whatsapp"/></svg></a>
       </div>
     </div>
   </div>
