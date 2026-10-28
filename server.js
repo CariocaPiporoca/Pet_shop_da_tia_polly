@@ -1,339 +1,165 @@
-//==========================================
-//  Validação do campo de data do agendamento
-//========================================== 
+const express = require('express');
+const path = require('path');
 
-const campoData = document.getElementById('data');
+const db = require('./database');
 
-if (campoData) {
+const app = express();
 
-    
-    function obterDataLocal() {
-        const hoje = new Date();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-        const ano = hoje.getFullYear();
-        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
-        const dia = String(hoje.getDate()).padStart(2, '0');
-
-        return `${ano}-${mes}-${dia}`;
-    }
-
-    
-    campoData.min = obterDataLocal();
-
-    
-    campoData.addEventListener('change', function () {
-
-        if (!this.value) return;
-
-        
-        const [ano, mes, dia] = this.value.split('-').map(Number);
-
-        const dataSelecionada = new Date(ano, mes - 1, dia);
-        const diaSemana = dataSelecionada.getDay();
-
-        
-        if (diaSemana === 0 || diaSemana === 6) {
-
-            alert(
-                'Por favor, selecione uma data de segunda a sexta-feira.'
-            );
-
-            this.value = '';
-        }
-    });
-
-}
-
-
+app.use(express.static(path.join(__dirname)));
 
 // ==========================================
-// Firebase - Formulário de Agendamento
+// Página principal
 // ==========================================
 
-
-import {
-    collection,
-    addDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // ==========================================
-// Formulário de Agendamento
+// Criar agendamento
 // ==========================================
 
-const formularioAgendamento = document.querySelector(
-    '#agendamento form'
-);
+app.post('/api/agendamentos', async (req, res) => {
 
+    try {
 
+        const dados = req.body;
 
-if (formularioAgendamento) {
+        // Verificar campos obrigatórios
+        if (
+            !dados.petNome ||
+            !dados.especie ||
+            !dados.tutorNome ||
+            !dados.tutorWhatsapp ||
+            !dados.servico ||
+            !dados.data ||
+            !dados.horario
+        ) {
 
-    formularioAgendamento.addEventListener('submit', async (event) => {
-
-        event.preventDefault();
-
-
-        // ==========================================
-        // Verificar conexão com o Firebase
-        // ==========================================
-
-        const db = window.firebaseDB;
-
-        if (!db) {
-
-            console.error('Firebase não foi inicializado.');
-
-            alert(
-                'Erro: o banco de dados não foi conectado.\n\n' +
-                'Verifique a configuração do Firebase.'
-            );
-
-            return;
-        }
-
-
-        // ==========================================
-        // Coletar Valores do Formulário
-        // ==========================================
-
-        const dados = {
-
-            petNome: document
-                .getElementById('pet-nome')
-                .value
-                .trim(),
-
-            especie: document
-                .getElementById('pet-especie')
-                .value,
-
-            raca: document
-                .getElementById('pet-raca')
-                .value
-                .trim(),
-
-            idade: document
-                .getElementById('pet-idade')
-                .value
-                .trim(),
-
-            tutorNome: document
-                .getElementById('tutor-nome')
-                .value
-                .trim(),
-
-            tutorWhatsapp: document
-                .getElementById('tutor-whatsapp')
-                .value
-                .trim(),
-
-            servico: document
-                .getElementById('servico')
-                .value,
-
-            data: document
-                .getElementById('data')
-                .value,
-
-            horario: document
-                .getElementById('horario')
-                .value,
-
-            observacoes: document
-                .getElementById('observacoes')
-                .value
-                .trim(),
-
-            criadoEm: serverTimestamp()
-
-        };
-
-
-        // ==========================================
-        // Enviar dados para o Firebase
-        // ==========================================
-
-        try {
-
-            const documento = await addDoc(
-                collection(db, 'agendamentos'),
-                dados
-            );
-
-
-            // ==========================================
-            // Sucesso
-            // ==========================================
-
-            console.log(
-                'Agendamento salvo com sucesso!',
-                documento.id
-            );
-
-
-            alert(
-                'Agendamento realizado com sucesso!' +
-                '\n\nNúmero do agendamento: ' +
-                documento.id
-            );
-
-            //==========================================
-            // Limpa o formulário
-            //==========================================
-            
-            formularioAgendamento.reset();
-
-
-        } catch (erro) {
-
-            // ==========================================
-            // Erro
-            // ==========================================
-
-            console.error(
-                'Erro ao salvar agendamento:',
-                erro
-            );
-
-
-            alert(
-                'Não foi possível realizar o agendamento.\n\n' +
-                'Verifique sua conexão com o Firebase.'
-            );
+            return res.status(400).json({
+                mensagem: 'Preencha todos os campos obrigatórios.'
+            });
 
         }
 
-    });
+        // Criar documento no Firestore
+        const agendamento = await db.collection('agendamentos').add({
 
-}
+            petNome: dados.petNome,
+            especie: dados.especie,
+            raca: dados.raca || '',
+            idade: dados.idade || '',
 
+            tutorNome: dados.tutorNome,
+            tutorWhatsapp: dados.tutorWhatsapp,
 
-// ==========================================
-// Firebase - Formulário de Mensagem
-// ==========================================
+            servico: dados.servico,
+            data: dados.data,
+            horario: dados.horario,
 
-const formularioMensagem = document.querySelector(
-    '#contato form'
-);
-
-if (formularioMensagem) {
-
-    formularioMensagem.addEventListener('submit', async (event) => {
-
-        event.preventDefault();
-
-        // ==========================================
-        // Verificar conexão com o Firebase
-        // ==========================================
-
-        const db = window.firebaseDB;
-
-        if (!db) {
-
-            console.error('Firebase não foi inicializado.');
-
-            alert(
-                'Erro: o banco de dados não foi conectado.\n\n' +
-                'Verifique a configuração do Firebase.'
-            );
-
-            return;
-        }
-
-        // ==========================================
-        // Coletar valores do formulário
-        // ==========================================
-
-        const dados = {
-
-            nome: document
-                .getElementById('c-nome')
-                .value
-                .trim(),
-
-            contato: document
-                .getElementById('c-contato')
-                .value
-                .trim(),
-
-            mensagem: document
-                .getElementById('c-mensagem')
-                .value
-                .trim(),
+            observacoes: dados.observacoes || '',
 
             status: 'pendente',
 
-            criadoEm: serverTimestamp()
+            criadoEm: new Date()
+        });
 
-        };
+        console.log('Novo agendamento:', agendamento.id);
 
-        // ==========================================
+        return res.status(201).json({
+
+            mensagem: 'Agendamento realizado com sucesso!',
+
+            agendamentoId: agendamento.id
+
+        });
+
+    } catch (erro) {
+
+        console.error('Erro ao criar agendamento:', erro);
+
+        return res.status(500).json({
+
+            mensagem: 'Erro ao salvar o agendamento no Firebase.'
+
+        });
+
+    }
+
+});
+
+//===========================================
+// Enviar mensagem
+//===========================================
+
+app.post('/api/mensagens', async (req, res) => {
+
+    try {
+
+        const dados = req.body;
+
         // Verificar campos obrigatórios
-        // ==========================================
-
         if (
             !dados.nome ||
             !dados.contato ||
             !dados.mensagem
         ) {
 
-            alert(
-                'Preencha todos os campos antes de enviar.'
-            );
-
-            return;
-        }
-
-        // ==========================================
-        // Enviar dados para o Firebase
-        // ==========================================
-
-        try {
-
-            const documento = await addDoc(
-                collection(db, 'mensagens'),
-                dados
-            );
-
-            // ==========================================
-            // Sucesso
-            // ==========================================
-
-            console.log(
-                'Mensagem salva com sucesso!',
-                documento.id
-            );
-
-            alert(
-                'Mensagem enviada com sucesso!'
-            );
-
-            // ==========================================
-            // Limpar formulário
-            // ==========================================
-
-            formularioMensagem.reset();
-
-        } catch (erro) {
-
-            // ==========================================
-            // Erro
-            // ==========================================
-
-            console.error(
-                'Erro ao salvar mensagem:',
-                erro
-            );
-
-            alert(
-                'Não foi possível enviar a mensagem.\n\n' +
-                'Verifique sua conexão com o Firebase.'
-            );
+            return res.status(400).json({
+                mensagem: 'Preencha todos os campos obrigatórios.'
+            });
 
         }
 
-    });
+        // Criar documento no Firestore
+        const mensagem = await db.collection('mensagens').add({
 
-}
+            nome: dados.nome,
+            contato: dados.contato,
+            mensagem: dados.mensagem,
+
+            status: 'pendente',
+
+            criadoEm: new Date()
+        });
+
+        console.log('Nova mensagem:', mensagem.id);
+
+        return res.status(201).json({
+
+            mensagem: 'Mensagem enviada com sucesso!',
+
+            mensagemId: mensagem.id
+
+        });
+
+    } catch (erro) {
+
+        console.error('Erro ao enviar mensagem:', erro);
+
+        return res.status(500).json({
+
+            mensagem: 'Erro ao salvar a mensagem no Firebase.'
+
+        });
+
+    }
+
+});
+
+
+// ==========================================
+// Iniciar servidor
+// ==========================================
+
+app.listen(3000, () => {
+
+    console.log('==============================');
+    console.log('Servidor iniciado!');
+    console.log('Acesse: http://localhost:3000');
+    console.log('==============================');
+
+});
