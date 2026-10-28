@@ -1,3 +1,51 @@
+//==========================================
+//  Validação do campo de data do agendamento
+//========================================== 
+
+const campoData = document.getElementById('data');
+
+if (campoData) {
+
+    
+    function obterDataLocal() {
+        const hoje = new Date();
+
+        const ano = hoje.getFullYear();
+        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+        const dia = String(hoje.getDate()).padStart(2, '0');
+
+        return `${ano}-${mes}-${dia}`;
+    }
+
+    
+    campoData.min = obterDataLocal();
+
+    
+    campoData.addEventListener('change', function () {
+
+        if (!this.value) return;
+
+        
+        const [ano, mes, dia] = this.value.split('-').map(Number);
+
+        const dataSelecionada = new Date(ano, mes - 1, dia);
+        const diaSemana = dataSelecionada.getDay();
+
+        
+        if (diaSemana === 0 || diaSemana === 6) {
+
+            alert(
+                'Por favor, selecione uma data de segunda a sexta-feira.'
+            );
+
+            this.value = '';
+        }
+    });
+
+}
+
+
+
 // ==========================================
 // Firebase - Formulário de Agendamento
 // ==========================================
